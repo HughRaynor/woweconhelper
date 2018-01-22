@@ -2,7 +2,7 @@ import praw # Python Reddit API Wrapper
 # This WoWEconHelper bot was created by Hugh R. (/u/Nivarka) for Gumdrops and the woweconomy team. Permission to use, modify, reproduce or commercialise this script is given only to moderators of the woweconomy subreddit (https://www.reddit.com/r/woweconomy/)
 
 #KEYWORD BANK. To update, simply add another string into 'single quotes'. To add another category, create a name for it as below, and add it into case selection.
-prof = ['skill', 'prof']
+prof = ['skill', 'profs', 'profession']
 farm = ['farm', 'grind', 'gather', 'skin', 'collect', 'min']
 mission = ['mission', 'hall','champion']
 new = ['new', 'noob', 'beginner', 'starter']
