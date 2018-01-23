@@ -6,7 +6,7 @@ import praw # Python Reddit API Wrapper
 prof = ['skill', 'prof', 'enchant', 'leather', 'tailor', 'alch', 'smith', 'engineer', 'inscription', 'jewelcrafting']
 farm = ['farm', 'grind', 'gather', 'skin', 'collect', 'min', 'herb']
 mission = ['mission', 'hall','champion']
-new = ['new', 'noob', 'beginner', 'starter']
+new = ['new', 'noob', 'beginner', 'start']
 question = ['?', 'question']
 
 response = 'Hey there {},\n\n \n\n Judging by the title of your post, it looks like you _*might*_ be asking a rather common question about {}. I think you might be able to find some useful information in the following places:\n\n{}\n\n{}\n\n If these resources help you out sufficiently, please could you consider deleting this post? If these are not helpful, just ignore me!\n\n \n\n *I am a bot! This reply was triggered based on the title of your post. Please contact the subreddit moderators if you have any feedback on me.*'
@@ -59,14 +59,12 @@ def answer_questions(submission):
                                                 break
                                         
                 for kw in new:
-                        if kw in lower_title:
-                                for q in question:
-                                        if q in lower_title and caught == 0:
-                                                topic = 'getting started with gold making'
-                                                print('Responding...')
-                                                submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/7nbe98/a_gift_to_close_out_2017_the_definitive_newbie/", "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/"))
-                                                caught = 1
-                                                break
+                        if kw in lower_title and caught == 0:
+                                        topic = 'getting started with gold making'
+                                        print('Responding...')
+                                        submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/7nbe98/a_gift_to_close_out_2017_the_definitive_newbie/", "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/"))
+                                        caught = 1
+                                        break
 
                 print('Completed: {}'.format(submission.title))
 		
