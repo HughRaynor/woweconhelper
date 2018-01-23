@@ -9,31 +9,32 @@ mission = ['mission', 'hall','champion']
 new = ['new', 'noob', 'beginner', 'starter']
 question = ['?', 'question']
 
-response = 'Hey there {},\n\n\n\n Judging by the title of your post, it looks like you _*might*_ be asking a rather common question about {}. I think you might be able to find some useful information in the following places:\n\n{}\n\n{}\n\n If these resources help you out sufficiently, please could you consider deleting this post? If these are not helpful, just ignore me!\n\n\n\n *I am a bot! This reply was triggered based on the title of your post. Please contact the subreddit moderators if you have any feedback on me.*'
+response = 'Hey there {},\n\n \n\n Judging by the title of your post, it looks like you _*might*_ be asking a rather common question about {}. I think you might be able to find some useful information in the following places:\n\n{}\n\n{}\n\n If these resources help you out sufficiently, please could you consider deleting this post? If these are not helpful, just ignore me!\n\n \n\n *I am a bot! This reply was triggered based on the title of your post. Please contact the subreddit moderators if you have any feedback on me.*'
+starttime = time.time()
 
 def main():
         reddit = praw.Reddit('woweconhelper')
         subreddit = reddit.subreddit('woweconomy')
-        tim
+        print('Bot loaded!')
         for submission in subreddit.stream.submissions():
                 answer_questions(submission)
 
 
-def answer_questions(submission, time):
+def answer_questions(submission):
 
         
         caught = 0
         lower_title = submission.title.lower()
 
-        if submission.created_utc > time.time():
-                print('Attempting to handle: {}'.format(submission.title))
+        if submission.created_utc > starttime:
+                print('Scanning: {}'.format(submission.title))
                 for kw in prof:
                         if kw in lower_title:
                                 for q in question:
                                         if q in lower_title and caught == 0:
                                                 topic = 'professions'
+                                                print('Responding...')
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/6js3ka/how_do_i_make_gold_and_co/", "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/"))
-                                                print('Handling...')
                                                 caught = 1
                                                 break
                         
@@ -42,8 +43,8 @@ def answer_questions(submission, time):
                                 for q in question:
                                         if q in lower_title and caught == 0:
                                                 topic = 'farming'
+                                                print('Responding...')
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/", "https://www.reddit.com/r/woweconomy/wiki/raidgrinding"))
-                                                print('Handling...')
                                                 caught = 1
                                                 break
 
@@ -52,8 +53,8 @@ def answer_questions(submission, time):
                                 for q in question:
                                         if q in lower_title and caught == 0:
                                                 topic = 'missions or orderhalls'
+                                                print('Responding...')
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/7oloe0/my_order_hall_spreadsheet/", "https://www.reddit.com/r/woweconomy/comments/77i7wv/73_order_hall_mission_guide/"))
-                                                print('Handling...')
                                                 caught = 1
                                                 break
                                         
@@ -62,12 +63,12 @@ def answer_questions(submission, time):
                                 for q in question:
                                         if q in lower_title and caught == 0:
                                                 topic = 'getting started with gold making'
+                                                print('Responding...')
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/7nbe98/a_gift_to_close_out_2017_the_definitive_newbie/", "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/"))
-                                                print('Handling...')
                                                 caught = 1
                                                 break
 
-                print('Completed handling of: {}'.format(submission.title))
+                print('Completed: {}'.format(submission.title))
 		
 
 
