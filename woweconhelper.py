@@ -29,7 +29,7 @@ def answer_questions(submission):
         lower_title = submission.title.lower()
 
         if submission.created_utc > starttime:
-                print('Scanning: {}'.format(submission.title.encode('ascii', 'ignore'))
+                print('Scanning: {}'.format(submission.title.encode('ascii', 'ignore')))
                 for kw in prof:
                         if kw in lower_title:
                                 for q in question:
