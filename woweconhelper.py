@@ -1,3 +1,4 @@
+import sys
 import time # Wibbly Wobbly
 import praw # Python Reddit API Wrapper
 # This WoWEconHelper bot was created by Hugh R. (/u/Nivarka) for Gumdrops and the woweconomy team. Permission to use, modify, reproduce or commercialise this script is given only to moderators of the woweconomy subreddit (https://www.reddit.com/r/woweconomy/)
@@ -6,13 +7,14 @@ import praw # Python Reddit API Wrapper
 prof = ['skill', 'prof', 'enchant', 'leather', 'tailor', 'alch', 'smith', 'engineer', 'inscription', 'jewelcrafting']
 farm = ['farm', 'grind', 'gather', 'skin', 'collect', 'min', 'herb']
 mission = ['mission', 'hall','champion']
-new = ['new', 'noob', 'beginner', 'start']
+new = ['new', 'noob', 'beginner', 'start', 'new']
 question = ['?', 'question']
 
 response = 'Hey there {},\n\n \n\n Judging by the title of your post, it looks like you _*might*_ be asking a rather common question about {}. I think you might be able to find some useful information in the following places:\n\n{}\n\n{}\n\n If these resources help you out sufficiently, please could you consider deleting this post? If these are not helpful, just ignore me!\n\n \n\n *I am a bot! This reply was triggered based on the title of your post. Please contact the subreddit moderators if you have any feedback on me.*'
 starttime = time.time()
 
 def main():
+        sys.stdout.write("\x1b]2;WoWEconHelper\x07")
         reddit = praw.Reddit('woweconhelper')
         subreddit = reddit.subreddit('woweconomy')
         print('Bot loaded!')
