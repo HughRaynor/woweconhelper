@@ -17,7 +17,7 @@ def main():
         sys.stdout.write("\x1b]2;WoWEconHelper\x07")
         reddit = praw.Reddit('woweconhelper')
         subreddit = reddit.subreddit('woweconomy')
-        print('Bot loaded!')
+        print('{}: Bot loaded!'.format(time.strftime("%d-%m-%y %H:%M")))
         for submission in subreddit.stream.submissions():
                 answer_questions(submission)
 
@@ -29,13 +29,13 @@ def answer_questions(submission):
         lower_title = submission.title.lower()
 
         if submission.created_utc > starttime:
-                print('Scanning: {}'.format(submission.title.encode('ascii', 'ignore')))
+                print('{}: Scanning: {}'.format(time.strftime("%d-%m-%y %H:%M"), submission.title.encode('ascii', 'ignore')))
                 for kw in prof:
                         if kw in lower_title:
                                 for q in question:
                                         if q in lower_title and caught == 0:
                                                 topic = 'professions'
-                                                print('Responding...')
+                                                print('{}: Responding...'.format(time.strftime("%d-%m-%y %H:%M")))
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/6js3ka/how_do_i_make_gold_and_co/", "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/"))
                                                 caught = 1
                                                 break
@@ -45,7 +45,7 @@ def answer_questions(submission):
                                 for q in question:
                                         if q in lower_title and caught == 0:
                                                 topic = 'farming'
-                                                print('Responding...')
+                                                print('{}: Responding...'.format(time.strftime("%d-%m-%y %H:%M")))
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/", "https://www.reddit.com/r/woweconomy/wiki/raidgrinding"))
                                                 caught = 1
                                                 break
@@ -55,7 +55,7 @@ def answer_questions(submission):
                                 for q in question:
                                         if q in lower_title and caught == 0:
                                                 topic = 'missions or orderhalls'
-                                                print('Responding...')
+                                                print('{}: Responding...'.format(time.strftime("%d-%m-%y %H:%M")))
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/7oloe0/my_order_hall_spreadsheet/", "https://www.reddit.com/r/woweconomy/comments/77i7wv/73_order_hall_mission_guide/"))
                                                 caught = 1
                                                 break
@@ -63,12 +63,12 @@ def answer_questions(submission):
                 for kw in new:
                         if kw in lower_title and caught == 0:
                                         topic = 'getting started with gold making'
-                                        print('Responding...')
+                                        print('{}: Responding...'.format(time.strftime("%d-%m-%y %H:%M")))
                                         submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/7nbe98/a_gift_to_close_out_2017_the_definitive_newbie/", "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/"))
                                         caught = 1
                                         break
 
-                print('Completed: {}'.format(submission.title))
+                print('{}: Completed: {}'.format(time.strftime("%d-%m-%y %H:%M"), submission.title))
 		
 
 
