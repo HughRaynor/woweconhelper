@@ -1,7 +1,7 @@
 import sys
 import time # Wibbly Wobbly
 import praw # Python Reddit API Wrapper
-# This WoWEconHelper bot was created by Hugh R. (/u/Nivarka) for Gumdrops and the woweconomy team. Permission to use, modify, reproduce or commercialise this script is given only to moderators of the woweconomy subreddit (https://www.reddit.com/r/woweconomy/)
+# This WoWEconHelper bot was created by Hugh. (/u/Nivarka) for Gumdrops and the woweconomy team. Permission to use, modify, reproduce or commercialise this script is given only to moderators of the woweconomy subreddit (https://www.reddit.com/r/woweconomy/)
 
 #KEYWORD BANK. To update, simply add another string into 'single quotes'. To add another category, create a name for it as below, and add it into case selection.
 prof = ['skill', 'prof', 'enchant', 'leather', 'tailor', 'alch', 'smith', 'engineer', 'inscription', 'jewelcrafting']
@@ -11,7 +11,7 @@ new = ['new', 'noob', 'beginner', 'start', 'new', 'earn gold', 'make gold']
 question = ['?', 'question']
 
 response = 'Hey there {},\n\n \n\n Judging by the title of your post, it looks like you _*might*_ be asking a rather common question about {}. I think you might be able to find some useful information in the following places:\n\n{}\n\n{}\n\n If these resources help you out sufficiently, please could you consider deleting this post? If these are not helpful, just ignore me!\n\n \n\n *I am a bot! This reply was triggered based on the title of your post. Please contact the subreddit moderators if you have any feedback on me.*'
-starttime = time.time()
+starttime = time.time() #get the current time
 
 def main():
         sys.stdout.write("\x1b]2;WoWEconHelper\x07")
@@ -34,7 +34,7 @@ def answer_questions(submission):
                         if kw in lower_title:
                                 for q in question:
                                         if q in lower_title and caught == 0:
-                                                topic = 'professions'
+                                                topic = 'professions' #the topic keyword we're looking for
                                                 print('{}: Responding...'.format(time.strftime("%d-%m-%y %H:%M")))
                                                 submission.reply(response.format(submission.author, topic, "https://www.reddit.com/r/woweconomy/comments/6js3ka/how_do_i_make_gold_and_co/", "https://www.reddit.com/r/woweconomy/comments/6oizli/the_lazy_goldmakers_total_legion_gold_guide/"))
                                                 caught = 1
